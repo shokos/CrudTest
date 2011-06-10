@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>登録画面</title>
+    </head>
+    <body>
+        <strong>登録画面</strong>
+        <br/><br/>
+        <div wicket:id="feedback">
+        </div>
+		<form wicket:id="form">
+			<div>
+	             <label>
+	                名前<em>*</em>
+	             </label>
+	             <input type="text" size="50" maxlength="50" wicket:id="name" />
+	         </div>
+	         <div>
+	             <label>
+	                年齢
+	             </label>
+	             <input type="text" size="50" maxlength="50" wicket:id="old" />
+	         </div>
+	         <div>
+                 <label>
+                     　　血液型
+                 </label>
+                 <select wicket:id="blood">
+                     <option value="" selected="selected">未選択</option>
+                 </select>
+              </div>
+              <div>
+                 <input type="submit" wicket:id="submit" value="&nbsp;確認&nbsp;" />
+                 <button wicket:id="return">
+                     &nbsp;戻る&nbsp;
+                 </button>
+              </div>
+		</form>
+    </body>
+</html>
+

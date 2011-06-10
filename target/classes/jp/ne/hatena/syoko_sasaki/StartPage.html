@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>ほげ</title>
+    </head>
+    <body>
+        <strong>一覧画面</strong>
+        <br/><br/>
+        <div id="top-button">
+            <input type="button" value="新規登録" class="button" wicket:id="updateLink" />
+        </div>
+        <fieldset>
+                        <legend>
+                            一覧
+                        </legend>
+                        <div>
+                            <table width="80%">
+                                <thead>
+                                    <!--tr class="royalty"-->
+									<tr style="background-color: #FFA975;">
+                                        <th style="width: 20%">
+                                           名前
+                                        </th>
+                                        <th style="width: 20%">
+                                            年齢
+                                        </th>
+                                        <th style="width: 8%">
+                                            血液型
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr wicket:id="listView">
+                                        <td class="text">
+                                        	<span wicket:id="name"></span>
+                                        </td>
+                                        <td class="text">
+                                        	<span wicket:id="old"></span>
+                                        </td>
+                                        <td class="text">
+                                        	<span wicket:id="blood.name"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </fieldset>
+    </body>
+</html>
+
