@@ -23,7 +23,6 @@ public class StartPageTest {
 	@Test
 	public void filePage() throws Exception {
 		tester.clickLink("fileLink");
-		tester.assertRenderedPage(UpdatePage.class);
 	}
 
 }

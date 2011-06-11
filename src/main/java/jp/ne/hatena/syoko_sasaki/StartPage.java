@@ -20,7 +20,6 @@ public class StartPage extends WebPage {
 
 	// TODO Add any page properties or variables here
 
-
 	public StartPage(final PageParameters parameters) {
 		List<TestObj> objList = getObjList();
 		add(new Link<Void>("updateLink") {
@@ -30,6 +29,17 @@ public class StartPage extends WebPage {
 			@Override
 			public void onClick() {
 				setResponsePage(new UpdatePage(StartPage.this));
+			}
+
+		});
+		add(new Link<Void>("fileLink") {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onClick() {
+				// TODO Auto-generated method stub
+
 			}
 
 		});
@@ -45,14 +55,13 @@ public class StartPage extends WebPage {
 		return list;
 	}
 
-	class TestObjListView extends ListView<TestObj>{
+	class TestObjListView extends ListView<TestObj> {
 
 		private static final long serialVersionUID = 1L;
 
 		public TestObjListView(String id, List<? extends TestObj> list) {
 			super(id, list);
 		}
-
 
 		@Override
 		protected void populateItem(ListItem<TestObj> item) {
