@@ -11,16 +11,20 @@ import org.apache.wicket.model.CompoundPropertyModel;
 
 public class FilePage {
 
+	FilePage() {
+
+	}
+
 	class UploadForm extends Form<UploadForm> {
 
 		private static final long serialVersionUID = 1L;
 
-		transient FileUpload logFile;
+		transient FileUpload fileUplode;
 
 		public UploadForm(String id) {
 			super(id);
 			setDefaultModel(new CompoundPropertyModel<UploadForm>(this));
-			add(new FileUploadField("logFile").setRequired(true));
+			add(new FileUploadField("fileUplode").setRequired(true));
 			add(new Button("submit"));
 		}
 
@@ -28,23 +32,23 @@ public class FilePage {
 		protected void onSubmit() {
 			super.onSubmit();
 			String path = "path";
-			File file = new File(path, logFile.getClientFileName());
+			File file = new File(path, fileUplode.getClientFileName());
 			if (path.equals("test")) {
 				try {
-					file = File.createTempFile(logFile.getClientFileName(),
+					file = File.createTempFile(fileUplode.getClientFileName(),
 							".csv");
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 				}
 			}
 			try {
-				logFile.writeTo(file);
+				fileUplode.writeTo(file);
 			} catch (IOException e) {
 				error("アップロードに失敗しました。");
-				logFile.closeStreams();
+				fileUplode.closeStreams();
 				return;
 			}
-			logFile.closeStreams();
+			fileUplode.closeStreams();
 			info("アップロードしました。");
 		}
 

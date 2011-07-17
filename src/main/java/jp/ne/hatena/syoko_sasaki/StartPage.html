@@ -7,7 +7,6 @@
         <br/><br/>
         <div id="top-button">
             <input type="button" value="新規登録" class="button" wicket:id="updateLink" />
-            <input type="button" value="ファイル管理" class="button" wicket:id="fileLink" />
         </div>
         <fieldset>
                         <legend>
@@ -18,6 +17,9 @@
                                 <thead>
                                     <!--tr class="royalty"-->
 									<tr style="background-color: #FFA975;">
+										<th style="width: 20%">
+                                           &nbsp;
+                                        </th>
                                         <th style="width: 20%">
                                            名前
                                         </th>
@@ -25,11 +27,15 @@
                                             年齢
                                         </th>
                                         <th style="width: 8%">
-                                            血液型                                        </th>
+                                            血液型
+                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr wicket:id="listView">
+                                    	<td>
+                                    		<input type="button" value="&nbsp;更新&nbsp;" class="button" wicket:id="editLink" />
+                                  		</td>
                                         <td class="text">
                                         	<span wicket:id="name"></span>
                                         </td>

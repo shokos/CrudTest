@@ -32,17 +32,6 @@ public class StartPage extends WebPage {
 			}
 
 		});
-		add(new Link<Void>("fileLink") {
-
-			private static final long serialVersionUID = 1L;
-
-			@Override
-			public void onClick() {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
 		add(new TestObjListView("listView", objList));
 
 	}
@@ -65,11 +54,21 @@ public class StartPage extends WebPage {
 
 		@Override
 		protected void populateItem(ListItem<TestObj> item) {
-			TestObj obj = item.getModelObject();
+			final TestObj obj = item.getModelObject();
 			item.setDefaultModel(new CompoundPropertyModel<TestObj>(obj));
 			item.add(new Label("name"));
 			item.add(new Label("old"));
 			item.add(new Label("blood.name"));
+			item.add(new Link<Void>("editLink") {
+
+				private static final long serialVersionUID = 1L;
+
+				@Override
+				public void onClick() {
+					setResponsePage(new UpdatePage(StartPage.this, obj));
+				}
+
+			});
 		}
 
 	}

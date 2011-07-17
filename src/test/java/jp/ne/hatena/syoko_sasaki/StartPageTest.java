@@ -15,7 +15,7 @@ public class StartPageTest {
 	}
 
 	@Test
-	public void updatePage() throws Exception {
+	public void newPage() throws Exception {
 		tester.clickLink("updateLink");
 		tester.assertRenderedPage(UpdatePage.class);
 	}

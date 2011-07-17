@@ -16,20 +16,30 @@ import org.apache.wicket.model.CompoundPropertyModel;
 public class UpdatePage extends WebPage {
 
 	public UpdatePage(StartPage prevPage) {
-		add(new FeedbackPanel("feedback"));
-		TestObj testObj = new TestObj();
-		add(new UpdateForm("form", testObj));
+		init(new TestObj());
 	}
 
-	class UpdateForm extends Form<TestObj>{
+	public UpdatePage(StartPage startPage, TestObj obj) {
+		init(obj);
+	}
+
+	private void init(TestObj obj) {
+		add(new FeedbackPanel("feedback"));
+		add(new UpdateForm("form", obj));
+	}
+
+	class UpdateForm extends Form<TestObj> {
 
 		private static final long serialVersionUID = 1L;
+
 		public UpdateForm(String id, final TestObj obj) {
 			super(id);
 			setDefaultModel(new CompoundPropertyModel<TestObj>(obj));
 			add(new TextField<String>("name"));
 			add(new TextField<Integer>("old"));
-			add(new DropDownChoice<Blood>("blood", Arrays.asList(Blood.values()), new ChoiceRenderer<Blood>("name", "id")));
+			add(new DropDownChoice<Blood>("blood",
+					Arrays.asList(Blood.values()), new ChoiceRenderer<Blood>(
+							"name", "id")));
 			add(new Button("submit") {
 
 				private static final long serialVersionUID = 1L;

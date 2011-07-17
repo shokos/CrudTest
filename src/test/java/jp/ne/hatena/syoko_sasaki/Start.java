@@ -21,17 +21,17 @@ public class Start {
 		bb.setContextPath("/");
 		bb.setWar("src/main/webapp");
 
-		
 		// START JMX SERVER
 		// MBeanServer mBeanServer = ManagementFactory.getPlatformMBeanServer();
 		// MBeanContainer mBeanContainer = new MBeanContainer(mBeanServer);
 		// server.getContainer().addEventListener(mBeanContainer);
 		// mBeanContainer.start();
-		
+
 		server.addHandler(bb);
 
 		try {
-			System.out.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
+			System.out
+					.println(">>> STARTING EMBEDDED JETTY SERVER, PRESS ANY KEY TO STOP");
 			server.start();
 			while (System.in.available() == 0) {
 				Thread.sleep(5000);
