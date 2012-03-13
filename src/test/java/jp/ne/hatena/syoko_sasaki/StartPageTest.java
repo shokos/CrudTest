@@ -1,5 +1,9 @@
 package jp.ne.hatena.syoko_sasaki;
 
+import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+
+import org.apache.wicket.util.tester.FormTester;
 import org.apache.wicket.util.tester.WicketTester;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,9 +24,13 @@ public class StartPageTest {
 		tester.assertRenderedPage(UpdatePage.class);
 	}
 
+	
 	@Test
-	public void filePage() throws Exception {
-		tester.clickLink("fileLink");
+	public void buttonTest() throws Exception {
+		FormTester formTester = tester.newFormTester("form");
+		formTester.submit("submit");
+		tester.assertRenderedPage(StartPage.class);
+		tester.assertLabel("listView:0:name", "hoge");
 	}
 
 }

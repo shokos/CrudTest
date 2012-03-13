@@ -26,9 +26,16 @@ public class StartPage extends WebPage {
 
 	private final SearchQuery searchQuery = new SearchQuery();
 
-	// TODO Add any page properties or variables here
-
 	public StartPage(final PageParameters parameters) {
+		init();
+	}
+	
+	public StartPage(List<TestObj> objList) {
+		this.objList = objList;
+		init();
+	}
+	
+	private void init() {
 		add(new TestForm("form", new CompoundPropertyModel<SearchQuery>(
 				searchQuery)));
 		add(new Link<Void>("updateLink") {
@@ -42,17 +49,9 @@ public class StartPage extends WebPage {
 
 		});
 		add(new TestObjListView("listView", objList));
-
 	}
 
-	private List<TestObj> getObjList() {
-		List<TestObj> list = new ArrayList<TestObj>();
-		list.add(new TestObj("hoge", 22, Blood.O));
-		list.add(new TestObj("foo", 10, Blood.A));
-		list.add(new TestObj("piyo", 17, Blood.AB));
-		return list;
-	}
-
+	//フォーム
 	class TestForm extends Form<SearchQuery> {
 
 		public TestForm(String id, IModel<SearchQuery> model) {
@@ -66,16 +65,27 @@ public class StartPage extends WebPage {
 				public void onSubmit() {
 					super.onSubmit();
 					objList = getObjList();
+					setResponsePage(new StartPage(objList));
 				}
 
 			};
 			add(name, button);
 		}
 
+		//本来はDB処理でデータを持ってくる
+		private List<TestObj> getObjList() {
+			List<TestObj> list = new ArrayList<TestObj>();
+			list.add(new TestObj("hoge", 22, Blood.O));
+			list.add(new TestObj("foo", 10, Blood.A));
+			list.add(new TestObj("piyo", 17, Blood.AB));
+			return list;
+		}
+		
 		private static final long serialVersionUID = 1L;
 
 	}
 
+	//結果表示ListView
 	class TestObjListView extends ListView<TestObj> {
 
 		private static final long serialVersionUID = 1L;
